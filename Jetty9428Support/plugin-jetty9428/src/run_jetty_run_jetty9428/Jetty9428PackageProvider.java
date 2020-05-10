@@ -1,4 +1,4 @@
-package run_jetty_run_jetty94;
+package run_jetty_run_jetty9428;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -12,10 +12,10 @@ import runjettyrun.extensions.IJettyPackageProvider;
 import runjettyrun.utils.ProjectUtil;
 import runjettyrun.utils.VersionUtil;
 
-public class Jetty94PackageProvider implements IJettyPackageProvider {
+public class Jetty9428PackageProvider implements IJettyPackageProvider {
 
-	public static final String VERSION = "Jetty 9.4.6.v20170531";
-	public static final String[] VERSION_PREFIX = {"Jetty 9.4.6."};
+	public static final String VERSION = "Jetty 9.4.28.v20200408";
+	public static final String[] VERSION_PREFIX = {"Jetty 9.4.28."};
 
 	public IRuntimeClasspathEntry[] getPackage(String version, int type) {
 		try {
@@ -24,7 +24,7 @@ public class Jetty94PackageProvider implements IJettyPackageProvider {
 				String[] jars = ProjectUtil.getJarFilesIn(bundle, "lib");
 				jars = Arrays.stream(jars).filter(jar->{
 					boolean exclude = jar.startsWith("lib/jndi/");
-					exclude = exclude || jar.startsWith("lib/cdi-");
+					exclude = exclude || jar.startsWith("lib/jetty-cdi-");
 					return !exclude;
 				}).toArray(size->new String[size]);
 				return ProjectUtil.getLibs(bundle, jars);
@@ -68,10 +68,6 @@ public class Jetty94PackageProvider implements IJettyPackageProvider {
 
 		for(File f :new File("lib").listFiles()){
 			System.out.println("\"lib/"+f.getName()+"\",");
-		}
-
-		for(File f :new File("jndilib").listFiles()){
-			System.out.println("\"jndilib/"+f.getName()+"\",");
 		}
 	}
 }

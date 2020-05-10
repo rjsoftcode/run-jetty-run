@@ -24,6 +24,7 @@
     <module>Jetty93Support</module>
     <module>Jetty94Support</module>
     <module>Jetty948Support</module>
+    <module>Jetty9428Support</module>
   </modules>
   <build>
     <plugins>
